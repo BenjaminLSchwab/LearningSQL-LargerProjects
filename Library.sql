@@ -1,5 +1,5 @@
-use db_library;
 create database db_library;
+use db_library;
 
 create table tbl_branch(
 	branch_id int not null identity(1,1) primary key,
@@ -124,20 +124,20 @@ insert into tbl_borrower(borrower_name, borrower_address, borrower_phone) values
 insert into tbl_loans(book_id, branch_id, card_no, date_out, date_due) values
 	(1, 2, 1, '2000-05-18', '1939-02-03'),
 	(2, 2, 1, '2009-06-16', '2018-9-20'),
-	(3, 2, 1, '2000-07-18', '1945-01-27'),
+	(3, 2, 1, '2000-07-18', '2018-9-21'),
 	(4, 2, 1, '2009-08-16', '1946-12-25'),
 	(5, 2, 1, '2000-09-18', '1948-11-24'),
-	(6, 2, 1, '2009-10-16', '1955-04-18'),
 
+	(6, 1, 2, '2009-10-16', '1955-04-18'),
 	(7, 1, 2, '2000-11-18', '1955-11-27'),
 	(8, 1, 2, '2009-12-16', '1958-12-10'),
 	(9, 1, 2, '1926-06-20', '1959-07-23'),
 	(10, 1, 2, '1929-05-06', '1965-07-14'),
 	(11, 1, 2, '1939-02-03', '1969-03-06'),
 	(12, 1, 2, '1942-05-21', '1970-04-15'),
+	(13, 1, 2, '1945-01-27', '1971-04-12'),
+	(14, 1, 2, '1946-12-25', '1972-04-05'),
 
-	(13, 3, 3, '1945-01-27', '1971-04-12'),
-	(14, 3, 3, '1946-12-25', '1972-04-05'),
 	(15, 3, 3, '1948-11-24', '1976-10-12'),
 	(16, 3, 3, '1955-04-18', '1978-09-05'),
 	(17, 3, 3, '1955-11-27', '1989-07-04'),
@@ -160,7 +160,7 @@ insert into tbl_loans(book_id, branch_id, card_no, date_out, date_due) values
 	(11, 2, 7, '2015-12-03', '1955-04-18'),
 	(12, 2, 7, '2017-05-27', '2018-9-20'),
 	(13, 2, 7, '2017-10-14', '1958-12-10'),
-	(14, 2, 7, '1926-06-20', '2018-9-19'),
+	(14, 2, 7, '1926-06-20', '2018-9-21'),
 	(15, 2, 7, '1929-05-06', '1965-07-14'),
 	(16, 2, 7, '1939-02-03', '1969-03-06'),
 
@@ -174,7 +174,7 @@ insert into tbl_loans(book_id, branch_id, card_no, date_out, date_due) values
 	(3, 4, 8, '1958-12-10', '1989-10-04'),
 	(4, 4, 8, '1959-07-23', '1993-05-09'),
 	(5, 4, 8, '1965-07-14', '2009-01-30'),
-	(6, 4, 8, '1969-03-06', '2018-9-20'),
+	(6, 4, 8, '1969-03-06', '2018-9-21'),
 	(7, 4, 8, '1970-04-15', '2017-05-27'),
 	(8, 4, 8, '1971-04-12', '2017-10-14'),
 
@@ -183,7 +183,7 @@ insert into tbl_loans(book_id, branch_id, card_no, date_out, date_due) values
 	(11, 1, 9, '1978-09-05', '1939-02-03'),
 	(12, 1, 9, '1989-07-04', '1942-05-21'),
 	(13, 1, 9, '1989-10-04', '2018-9-20'),
-	(14, 1, 9, '1993-05-09', '2018-9-19')
+	(14, 1, 9, '1993-05-09', '2018-9-21')
 ;
 
 insert into tbl_copies(book_id, branch_id, number_copies) values
@@ -289,9 +289,7 @@ go
 		;
 
 GO 
-	exec ListCopiesInBranch 'The Lost Tribe', 'Sharpstown';
-
-
+	
 go
 	CREATE PROCEDURE ListCopies
 		@BookName varchar(50)
@@ -305,8 +303,6 @@ go
 		;
 
 GO
-	exec ListCopies 'The Lost Tribe';
-
 
 go
 	CREATE PROCEDURE ListInactiveBorrowers AS
@@ -317,8 +313,6 @@ go
 			book_id is null
 		;
 GO
-	exec ListInactiveBorrowers;
-
 
 go
 	CREATE PROCEDURE ListDueBorrowers
@@ -334,7 +328,71 @@ go
 			tbl_branch.branch_name = @Branch
 		;
 GO
-	exec ListDueBorrowers 'Sharpstown'
+
+go
+	CREATE PROCEDURE ListLoanedBooks AS
+	--	declare @BranchCount int;
+	--	set @BranchCount = (select COUNT(tbl_branch.branch_id) from tbl_branch);
+
+	--	create table tempTbl_loanCount(branch_id int, loans int);-- temporary table used to store the count of loans per each branch
+
+	--	declare @index int;
+	--	set @index = 0;
+	--	while @index < @BranchCount
+	--		begin
+	--			insert into tempTbl_loanCount(branch_id, loans) values(
+	--				@index + 1, --using (@index + 1) because branch_id starts at 1
+	--				(select COUNT(tbl_loans.book_id) from tbl_loans where tbl_loans.branch_id = (@index + 1)) 
+	--			);
+	--			set @index = @index + 1;
+	--		end
+		
+	--	select tbl_branch.branch_name as 'Branch', tempTbl_loanCount.loans as 'Loans Out' from --extracting values from temp table
+	--		tbl_branch inner join tempTbl_loanCount on tempTbl_loanCount.branch_id = tbl_branch.branch_id
+	--	;
+	--	drop table tempTbl_loanCount;
+
+	select COUNT(*) as 'Loans', tbl_branch.branch_name 
+	from tbl_loans
+	INNER JOIN tbl_branch ON tbl_loans.branch_id = tbl_branch.branch_id
+	GROUP BY tbl_branch.branch_name
+GO
+
+go
+	CREATE PROCEDURE ListBorrowers
+		@MinLoans int = 0
+	 AS
+		select tbl_borrower.borrower_name as 'Name', tbl_borrower.borrower_address as 'Address', COUNT(*) as 'Books Checked Out' 
+		from tbl_borrower 
+		inner join tbl_loans on tbl_borrower.card_no = tbl_loans.card_no
+		group by tbl_borrower.borrower_name, tbl_borrower.borrower_address
+		having COUNT(*) >= @MinLoans
+		;
+GO
+
+go
+	CREATE PROCEDURE ListCopiesByAuthorAndBranch
+		@Author varchar(30),
+		@Branch varchar(30)
+	 AS
+		select tbl_books.title as 'Title', tbl_copies.number_copies as 'Copies' from ((tbl_copies 
+		inner join tbl_branch on tbl_copies.branch_id = tbl_branch.branch_id) 
+		inner join tbl_books on tbl_books.book_id = tbl_copies.book_id) 
+		inner join tbl_authors on tbl_authors.book_id = tbl_books.book_id
+		where
+		tbl_authors.author_name = @Author
+		and tbl_branch.branch_name = @Branch
+GO
+
+--procedures created
+
+exec ListCopiesInBranch 'The Lost Tribe', 'Sharpstown';
+exec ListCopies 'The Lost Tribe';
+exec ListInactiveBorrowers;
+exec ListDueBorrowers 'Sharpstown'
+exec ListLoanedBooks;
+exec ListBorrowers 6;
+exec ListCopiesByAuthorAndBranch 'Stephen King', 'Central'
 
 
 
