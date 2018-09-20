@@ -123,7 +123,7 @@ insert into tbl_borrower(borrower_name, borrower_address, borrower_phone) values
 
 insert into tbl_loans(book_id, branch_id, card_no, date_out, date_due) values
 	(1, 2, 1, '2000-05-18', '1939-02-03'),
-	(2, 2, 1, '2009-06-16', '1942-05-21'),
+	(2, 2, 1, '2009-06-16', '2018-9-20'),
 	(3, 2, 1, '2000-07-18', '1945-01-27'),
 	(4, 2, 1, '2009-08-16', '1946-12-25'),
 	(5, 2, 1, '2000-09-18', '1948-11-24'),
@@ -146,7 +146,7 @@ insert into tbl_loans(book_id, branch_id, card_no, date_out, date_due) values
 	(19, 4, 4, '1959-07-23', '1993-05-09'),
 	(20, 4, 4, '1965-07-14', '2009-01-30'),
 	(1, 4, 4, '1969-03-06', '2015-12-03'),
-	(2, 4, 4, '1970-04-15', '2017-05-27'),
+	(2, 4, 4, '1970-04-15', '2018-9-19'),
 	(3, 4, 4, '1971-04-12', '2017-10-14'),
 	(4, 4, 4, '1972-04-05', '1926-06-20'),
 
@@ -157,12 +157,12 @@ insert into tbl_loans(book_id, branch_id, card_no, date_out, date_due) values
 	(9, 1, 5, '1993-05-09', '1946-12-25'),
 	(10, 1, 5, '2009-01-30', '1948-11-24'),
 
-	(11, 2, 6, '2015-12-03', '1955-04-18'),
-	(12, 2, 6, '2017-05-27', '1955-11-27'),
-	(13, 2, 6, '2017-10-14', '1958-12-10'),
-	(14, 2, 6, '1926-06-20', '1959-07-23'),
-	(15, 2, 6, '1929-05-06', '1965-07-14'),
-	(16, 2, 6, '1939-02-03', '1969-03-06'),
+	(11, 2, 7, '2015-12-03', '1955-04-18'),
+	(12, 2, 7, '2017-05-27', '2018-9-20'),
+	(13, 2, 7, '2017-10-14', '1958-12-10'),
+	(14, 2, 7, '1926-06-20', '2018-9-19'),
+	(15, 2, 7, '1929-05-06', '1965-07-14'),
+	(16, 2, 7, '1939-02-03', '1969-03-06'),
 
 	(17, 3, 7, '1942-05-21', '1970-04-15'),
 	(18, 3, 7, '1945-01-27', '1971-04-12'),
@@ -174,7 +174,7 @@ insert into tbl_loans(book_id, branch_id, card_no, date_out, date_due) values
 	(3, 4, 8, '1958-12-10', '1989-10-04'),
 	(4, 4, 8, '1959-07-23', '1993-05-09'),
 	(5, 4, 8, '1965-07-14', '2009-01-30'),
-	(6, 4, 8, '1969-03-06', '2015-12-03'),
+	(6, 4, 8, '1969-03-06', '2018-9-20'),
 	(7, 4, 8, '1970-04-15', '2017-05-27'),
 	(8, 4, 8, '1971-04-12', '2017-10-14'),
 
@@ -182,15 +182,8 @@ insert into tbl_loans(book_id, branch_id, card_no, date_out, date_due) values
 	(10, 1, 9, '1976-10-12', '1929-05-06'),
 	(11, 1, 9, '1978-09-05', '1939-02-03'),
 	(12, 1, 9, '1989-07-04', '1942-05-21'),
-	(13, 1, 9, '1989-10-04', '1945-01-27'),
-	(14, 1, 9, '1993-05-09', '1946-12-25'),
-
-	(15, 2, 10, '2009-01-30', '1948-11-24'),
-	(16, 2, 10, '2015-12-03', '1955-04-18'),
-	(17, 2, 10, '2017-05-27', '1955-11-27'),
-	(18, 2, 10, '2017-10-14', '1958-12-10'),
-	(19, 2, 10, '1926-06-20', '1959-07-23'),
-	(20, 2, 10, '1929-05-06', '1965-07-14')
+	(13, 1, 9, '1989-10-04', '2018-9-20'),
+	(14, 1, 9, '1993-05-09', '2018-9-19')
 ;
 
 insert into tbl_copies(book_id, branch_id, number_copies) values
@@ -215,7 +208,7 @@ insert into tbl_copies(book_id, branch_id, number_copies) values
 	(19, 1, 3),
 	(20, 1, 4),
 
-	(1, 2, 2),
+	(1, 2, 4),
 	(2, 2, 2),
 	(3, 2, 2),
 	(4, 2, 4),
@@ -236,7 +229,7 @@ insert into tbl_copies(book_id, branch_id, number_copies) values
 	(19, 2, 3),
 	(20, 2, 4),
 
-	(1, 3, 2),
+	(1, 3, 3),
 	(2, 3, 2),
 	(3, 3, 2),
 	(4, 3, 4),
@@ -257,7 +250,7 @@ insert into tbl_copies(book_id, branch_id, number_copies) values
 	(19, 3, 3),
 	(20, 3, 4),
 
-	(1, 4, 2),
+	(1, 4, 7),
 	(2, 4, 2),
 	(3, 4, 2),
 	(4, 4, 4),
@@ -281,7 +274,67 @@ insert into tbl_copies(book_id, branch_id, number_copies) values
 
 -- tables populated
 
---CREATE PROCEDURE procedure_name
---AS
---sql_statement
---GO;
+go
+	CREATE PROCEDURE ListCopiesInBranch
+		@BookName varchar(50),
+		@Branch varchar(30)
+	AS
+		select tbl_branch.branch_name as 'Branch', tbl_books.title as 'Title', tbl_copies.number_copies as 'Copies' from
+			((tbl_branch 
+			inner join tbl_copies on tbl_branch.branch_id = tbl_copies.branch_id) 
+			inner join tbl_books on tbl_copies.book_id = tbl_books.book_id)
+		where
+			tbl_books.title = @BookName and
+			tbl_branch.branch_name = @Branch
+		;
+
+GO 
+	exec ListCopiesInBranch 'The Lost Tribe', 'Sharpstown';
+
+
+go
+	CREATE PROCEDURE ListCopies
+		@BookName varchar(50)
+	AS
+		select tbl_branch.branch_name as 'Branch', tbl_books.title as 'Title', tbl_copies.number_copies as 'Copies' from
+			((tbl_branch 
+			inner join tbl_copies on tbl_branch.branch_id = tbl_copies.branch_id) 
+			inner join tbl_books on tbl_copies.book_id = tbl_books.book_id)
+		where
+			tbl_books.title = @BookName
+		;
+
+GO
+	exec ListCopies 'The Lost Tribe';
+
+
+go
+	CREATE PROCEDURE ListInactiveBorrowers AS
+		select tbl_borrower.borrower_name as 'Name', 0 as 'Books Loaned' from
+			(tbl_borrower left join
+			tbl_loans on tbl_borrower.card_no = tbl_loans.card_no)
+		where
+			book_id is null
+		;
+GO
+	exec ListInactiveBorrowers;
+
+
+go
+	CREATE PROCEDURE ListDueBorrowers
+		@Branch varchar(30)
+	 AS
+		select tbl_books.title as 'Title', tbl_borrower.borrower_name as 'Borrower Name', tbl_borrower.borrower_address as 'Address' from
+			(((tbl_books inner join 
+			tbl_loans on tbl_books.book_id = tbl_loans.book_id) inner join 
+			tbl_borrower on tbl_borrower.card_no = tbl_loans.card_no) inner join
+			tbl_branch on tbl_loans.branch_id = tbl_branch.branch_id)
+		where
+			tbl_loans.date_due = CONVERT(date, GETDATE()) and
+			tbl_branch.branch_name = @Branch
+		;
+GO
+	exec ListDueBorrowers 'Sharpstown'
+
+
+
